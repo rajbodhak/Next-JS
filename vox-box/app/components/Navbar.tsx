@@ -6,8 +6,8 @@ import { auth, signOut, signIn } from '@/auth'
 const Navbar = async () => {
     const session = await auth();
     return (
-        <header className='px-5 py-3 shadow-sm font-work-sans'>
-            <nav className='flex items-center justify-between'>
+        <header className='px-5 py-3 w-full font-work-sans fixed top-10 inset-x-0 max-w-3xl mx-auto z-50 bg-white rounded-full bg-opacity-10 bg-clip-padding backdrop-filter backdrop-blur-sm shadow-2xl'>
+            <nav className='top-2 flex items-center justify-between'>
                 <Link href={"/"}>
                     <Image src={"/logo.png"} alt='Logo' width={40} height={40} />
                 </Link>
