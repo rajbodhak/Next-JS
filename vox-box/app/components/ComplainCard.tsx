@@ -4,6 +4,11 @@ import { EyeIcon } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Author, Complain } from '@/sanity.types';
+
+export type ComplainCardType = Omit<Complain, "author"> & {
+    author?: Author;
+};
 
 const ComplainCard = ({ post }: { post: ComplainCardType }) => {
     const { _id, _createdAt, author, views, title, description, category, image } = post;
@@ -34,7 +39,7 @@ const ComplainCard = ({ post }: { post: ComplainCardType }) => {
                 <p className='complain-card_desc'>
                     {description}
                 </p>
-                <img src={image} alt="complain-image" className="complain-card_img" />
+                {image ? (<img src={image} alt="complain-image" className="complain-card_img" />) : (<img src="https://media.istockphoto.com/id/676694048/vector/complaints-files-and-documents-in-cabinet-in-office-3d-rendered-illustration.jpg?s=612x612&w=0&k=20&c=hbudcUf3ug2JlE8j1UwzC1605PCGBEYpmu2I8t0XqLI=" alt="complain-image" className="complain-card_img" />)}
             </Link>
 
             <div className='flex-between gap-3 mt-5'>

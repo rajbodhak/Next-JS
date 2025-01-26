@@ -21,6 +21,43 @@ body {
 }
 
 @layer utilities {
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .text-30-extrabold {
+    @apply text-[30px] font-extrabold text-white;
+  }
+
+  .text-30-bold {
+    @apply text-[30px] font-bold text-white;
+  }
+
+  .text-30-semibold {
+    @apply font-semibold text-[30px] text-white;
+  }
+
+  .text-26-semibold {
+    @apply font-semibold text-[26px] text-white;
+  }
+
+  .text-24-black {
+    @apply text-[24px] font-black text-white;
+  }
+
+  .text-20-medium {
+    @apply font-medium text-[20px] text-white;
+  }
+
+  .text-16-medium {
+    @apply font-medium text-[16px] text-white;
+  }
+
+  .text-14-normal {
+    @apply font-normal text-sm text-white-100/80;
+  }
+
   .heading {
     @apply text-6xl md:text-7xl lg:text-8xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 font-work-sans font-extrabold shadow-xl;
   }
@@ -31,5 +68,46 @@ body {
 
   .button-gradient {
     @apply px-6 py-3 bg-gradient-to-r from-neutral-50 to-gray-400 text-black font-semibold rounded-lg shadow-lg hover:from-neutral-600 hover:to-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 transition-all ;
+  }
+
+  .section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+
+  .card_grid-sm {
+    @apply grid sm:grid-cols-2 gap-5;
+  }
+
+  .no-result {
+    @apply text-black-100 text-sm font-normal;
+  }
+
+  /* complain Card */
+  .complain-card {
+    @apply bg-black border-[5px] border-white py-6 px-5 rounded-[22px] shadow-200 hover:border-gray-500 transition-all duration-500 hover:shadow-300 hover:bg-black/40 w-96;
+  }
+
+  .complain-card_date {
+    @apply font-medium text-[16px] bg-black px-4 py-2 rounded-full group-hover:bg-black/40;
+  }
+
+  .complain-card_desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
+  }
+
+  .complain-card_img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+
+  .complain-card_btn {
+    @apply rounded-full bg-white/65 font-medium text-[16px] text-black px-5 py-3 !important;
+  }
+
+  .complain-card_skeleton {
+    @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
 }
