@@ -170,15 +170,17 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: COMPLAIN_QUERY
-// Query: *[_type == "complain" && defined(slug.current)] | order(_createdAt desc){    _id,  title,  slug,  description,  category,  views,  pitch,  "author": author->{    _id,    name,    email,    image}}
+// Query: *[_type == "complain" && defined(slug.current)] | order(_createdAt desc){    _id,  title,  slug,  _createdAt,  description,  category,  views,  pitch,  image,  "author": author->{    _id,    name,    email,    image}}
 export type COMPLAIN_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  _createdAt: string;
   description: string | null;
   category: string | null;
   views: number | null;
   pitch: string | null;
+  image: string | null;
   author: {
     _id: string;
     name: string | null;
@@ -186,11 +188,31 @@ export type COMPLAIN_QUERYResult = Array<{
     image: string | null;
   } | null;
 }>;
+// Variable: COMPLAIN_BY_ID_QUERY
+// Query: *[_type == "complain" && _id == $id][0]{  _id,  title,  _createdAt,  slug,  description,  category,  views,  pitch,  image,  "author": author->{    _id,    name,    email,    image  }}
+export type COMPLAIN_BY_ID_QUERYResult = {
+  _id: string;
+  title: string | null;
+  _createdAt: string;
+  slug: Slug | null;
+  description: string | null;
+  category: string | null;
+  views: number | null;
+  pitch: string | null;
+  image: string | null;
+  author: {
+    _id: string;
+    name: string | null;
+    email: string | null;
+    image: string | null;
+  } | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"complain\" && defined(slug.current)] | order(_createdAt desc){\n    _id,\n  title,\n  slug,\n  description,\n  category,\n  views,\n  pitch,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n}\n}": COMPLAIN_QUERYResult;
+    "*[_type == \"complain\" && defined(slug.current)] | order(_createdAt desc){\n    _id,\n  title,\n  slug,\n  _createdAt,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n}\n}": COMPLAIN_QUERYResult;
+    "*[_type == \"complain\" && _id == $id][0]{\n  _id,\n  title,\n  _createdAt,\n  slug,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n  }\n}": COMPLAIN_BY_ID_QUERYResult;
   }
 }

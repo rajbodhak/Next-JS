@@ -8,7 +8,15 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*",
       }
-    ]
+    ],
+  },
+  // experimental: {
+  //   ppr: "incremental"
+  // },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right"
   }
 };
 

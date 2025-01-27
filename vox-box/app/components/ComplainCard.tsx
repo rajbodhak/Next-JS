@@ -32,7 +32,7 @@ const ComplainCard = ({ post }: { post: ComplainCardType }) => {
                         <h3 className='text-26-semibold line-clamp-1'>{title}</h3></Link>
                 </div>
                 <Link href={`/user/${author?._id}`}>
-                    <Image src="https://placehold.co/45x48" alt="placeholder" width={48} height={48} className="rounded-full" />
+                    <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full" />
                 </Link>
             </div>
             <Link href={`/complain/${_id}`}>
