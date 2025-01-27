@@ -75,7 +75,7 @@ body {
   }
 
   .card_grid {
-    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+    @apply grid lg:grid-cols-3 md:grid-cols-2 gap-5 place-items-center justify-items-center;
   }
 
   .card_grid-sm {
@@ -88,7 +88,7 @@ body {
 
   /* complain Card */
   .complain-card {
-    @apply bg-black border-[5px] border-white py-6 px-5 rounded-[22px] shadow-200 hover:border-gray-500 transition-all duration-500 hover:shadow-300 hover:bg-black/40 w-96;
+    @apply bg-black border-[5px] border-white py-6 px-5 rounded-[22px] shadow-200 hover:border-gray-500 transition-all duration-500 hover:shadow-300 hover:bg-black/40 max-w-96;
   }
 
   .complain-card_date {

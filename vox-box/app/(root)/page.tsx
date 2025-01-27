@@ -1,11 +1,13 @@
-import { client } from "@/sanity/lib/client";
+
 import ComplainCard, { ComplainCardType } from "../components/ComplainCard";
 import { COMPLAIN_QUERY } from "@/sanity/lib/queries";
 import Link from "next/link";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home() {
   // Fetch data
-  const posts = await client.fetch(COMPLAIN_QUERY);
+  // const posts = await client.fetch(COMPLAIN_QUERY);
+  const { data: posts } = await sanityFetch({ query: COMPLAIN_QUERY })
 
   // Transform data to match ComplainCardType
   const transformedPosts: ComplainCardType[] = posts.map((post: any) => ({
@@ -21,7 +23,7 @@ export default async function Home() {
   }));
 
   // Debug log transformed data
-  console.log("Transformed Posts:", transformedPosts);
+  // console.log("Transformed Posts:", transformedPosts);
 
   return (
     <>
@@ -38,7 +40,7 @@ export default async function Home() {
 
       <section className="section_container">
         <p className="text-30-semibold">All Posts</p>
-        <ul className="mt-7 card_grid">
+        <ul className="mt-7 card_grid ">
           {transformedPosts?.length > 0 ? (
             transformedPosts.map((post: ComplainCardType) => (
               <ComplainCard key={post._id} post={post} />
@@ -48,6 +50,7 @@ export default async function Home() {
           )}
         </ul>
       </section>
+      <SanityLive />
     </>
   );
 }
