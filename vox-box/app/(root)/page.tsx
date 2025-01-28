@@ -3,6 +3,7 @@ import ComplainCard, { ComplainCardType } from "../components/ComplainCard";
 import { COMPLAIN_QUERY } from "@/sanity/lib/queries";
 import Link from "next/link";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 export default async function Home() {
   // Fetch data
@@ -21,6 +22,9 @@ export default async function Home() {
       }
       : undefined,
   }));
+
+  const session = await auth();
+  console.log(session?.id);
 
   // Debug log transformed data
   // console.log("Transformed Posts:", transformedPosts);

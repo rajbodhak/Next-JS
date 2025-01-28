@@ -207,6 +207,12 @@ export type COMPLAIN_BY_ID_QUERYResult = {
     image: string | null;
   } | null;
 } | null;
+// Variable: COMPLAIN_VIEWS_QUERY
+// Query: *[_type == "complain" && _id == $id][0] {  _id, views}
+export type COMPLAIN_VIEWS_QUERYResult = {
+  _id: string;
+  views: number | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -214,5 +220,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"complain\" && defined(slug.current)] | order(_createdAt desc){\n    _id,\n  title,\n  slug,\n  _createdAt,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n}\n}": COMPLAIN_QUERYResult;
     "*[_type == \"complain\" && _id == $id][0]{\n  _id,\n  title,\n  _createdAt,\n  slug,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n  }\n}": COMPLAIN_BY_ID_QUERYResult;
+    "*[_type == \"complain\" && _id == $id][0] {\n  _id, views\n}": COMPLAIN_VIEWS_QUERYResult;
   }
 }
