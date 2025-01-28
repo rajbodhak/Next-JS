@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import StartUpForm from '@/components/ui/StartUpForm';
+import ComplainForm from '@/components/ui/ComplainForm';
 import { redirect } from 'next/navigation';
 import React from 'react'
 
@@ -14,7 +14,7 @@ const page = async () => {
                 <h1 className='heading '>Submit Your Complain</h1>
             </section>
 
-            <StartUpForm />
+            <ComplainForm />
         </>
     )
 }

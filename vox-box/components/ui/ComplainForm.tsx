@@ -11,7 +11,7 @@ import { z } from "zod";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/router';
 
-const StartUpForm = () => {
+const ComplainForm = () => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [pitch, setPitch] = React.useState("**Write Your Pitch**");
@@ -35,7 +35,7 @@ const StartUpForm = () => {
             // if (result.status == "SUCCESS") {
             //     toast({
             //         title: "Success",
-            //         description: "Your startup pitch has been created",
+            //         description: "Your complain pitch has been created",
             //     })
             // }
 
@@ -150,4 +150,4 @@ const StartUpForm = () => {
     </form>
 }
 
-export default StartUpForm
+export default ComplainForm
