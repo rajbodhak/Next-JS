@@ -38,7 +38,7 @@ export default async function Home() {
           Have a concern about university policies, facilities, or experiences? Share your complaints and help us create a better campus together.
         </p>
         <button className="button-gradient">
-          <Link href={"/create/"}>Share Your Thoughts</Link>
+          <Link href={"/complain/create/"}>Share Your Thoughts</Link>
         </button>
       </section>
 
