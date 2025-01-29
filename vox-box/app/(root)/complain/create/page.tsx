@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import ComplainForm from '@/components/ui/ComplainForm';
+import ComplainForm from '@/components/ComplainForm';
 import { redirect } from 'next/navigation';
 import React from 'react'
 

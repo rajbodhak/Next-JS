@@ -59,7 +59,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
                         <p className='no-result'>No details Provided</p>
                     )}
                 </div>
-                <hr className='my-4 divider' />
+
 
                 <Suspense fallback={<Skeleton className='view-skeleton' />}>
                     <View id={id} />

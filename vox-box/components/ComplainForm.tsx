@@ -2,8 +2,8 @@
 
 import React, { useActionState, useState } from 'react'
 import { Input } from "@/components/ui/input"
-import { Textarea } from './textarea';
-import { Button } from './button';
+import { Textarea } from './ui/textarea';
+import { Button } from './ui/button';
 import MDEditor from '@uiw/react-md-editor';
 import { Send } from 'lucide-react';
 import { formSchema } from '@/lib/validation';
@@ -36,7 +36,7 @@ const ComplainForm = () => {
             if (result.status == "SUCCESS") {
                 toast({
                     title: "Success",
-                    description: "Your complain pitch has been created",
+                    description: "Your complain pitch has been created successfully",
                 });
                 router.push(`/complain/${result._id}`)
             }

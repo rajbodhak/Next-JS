@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Author, Complain } from '@/sanity.types';
+import { Skeleton } from './ui/skeleton';
 
 export type ComplainCardType = Omit<Complain, "author"> & {
     author?: Author;
@@ -32,7 +33,7 @@ const ComplainCard = ({ post }: { post: ComplainCardType }) => {
                         <h3 className='text-26-semibold line-clamp-1'>{title}</h3></Link>
                 </div>
                 <Link href={`/user/${author?._id}`}>
-                    <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full" />
+                    <Image src={author?.image!} alt={author?.name!} width={48} height={48} className="rounded-full" />
                 </Link>
             </div>
             <Link href={`/complain/${_id}`}>
@@ -53,5 +54,15 @@ const ComplainCard = ({ post }: { post: ComplainCardType }) => {
         </li>
     )
 }
+
+export const ComplainCardSkeleton = () => (
+    <>
+        {[0, 1, 2, 3, 4].map((index: number) => (
+            <li key={cn('skeleton', index)}>
+                <Skeleton className='complain-card_skeleton' />
+            </li>
+        ))}
+    </>
+)
 
 export default ComplainCard
