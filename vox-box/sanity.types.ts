@@ -213,6 +213,25 @@ export type COMPLAIN_VIEWS_QUERYResult = {
   _id: string;
   views: number | null;
 } | null;
+// Variable: COMPLAIN_BY_AUTHOR_QUERY
+// Query: *[_type == "complain" && author._ref == $id] | order(_createdAt desc){  _id,title,slug,_createdAt,description,category,views,pitch,image,"author": author->{  _id,  name,  email,  image}}
+export type COMPLAIN_BY_AUTHOR_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  _createdAt: string;
+  description: string | null;
+  category: string | null;
+  views: number | null;
+  pitch: string | null;
+  image: string | null;
+  author: {
+    _id: string;
+    name: string | null;
+    email: string | null;
+    image: string | null;
+  } | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -221,5 +240,6 @@ declare module "@sanity/client" {
     "*[_type == \"complain\" && defined(slug.current)] | order(_createdAt desc){\n    _id,\n  title,\n  slug,\n  _createdAt,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n}\n}": COMPLAIN_QUERYResult;
     "*[_type == \"complain\" && _id == $id][0]{\n  _id,\n  title,\n  _createdAt,\n  slug,\n  description,\n  category,\n  views,\n  pitch,\n  image,\n  \"author\": author->{\n    _id,\n    name,\n    email,\n    image\n  }\n}": COMPLAIN_BY_ID_QUERYResult;
     "*[_type == \"complain\" && _id == $id][0] {\n  _id, views\n}": COMPLAIN_VIEWS_QUERYResult;
+    "*[_type == \"complain\" && author._ref == $id] | order(_createdAt desc){\n  _id,\ntitle,\nslug,\n_createdAt,\ndescription,\ncategory,\nviews,\npitch,\nimage,\n\"author\": author->{\n  _id,\n  name,\n  email,\n  image\n}\n}": COMPLAIN_BY_AUTHOR_QUERYResult;
   }
 }

@@ -13,12 +13,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     ],
     callbacks: {
         async signIn({ user: { name, email, image }, profile }) {
-            // Use profile.sub (Google's unique user ID)
-            console.log("Fetching user with ID:", profile?.sub);
+
             const existingUser = await client.fetch(AUTHOR_BY_GOOGLE_ID_QUERY, {
                 id: profile?.sub,
             });
-            console.log("Existing User:", existingUser);
 
             if (!existingUser) {
                 await writeClient.create({

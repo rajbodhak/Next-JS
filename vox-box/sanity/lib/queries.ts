@@ -60,20 +60,25 @@ export const AUTHOR_BY_ID_QUERY = `
   }
 `;
 
-export const COMPLAIN_BY_AUTHOR_QUERY = defineQuery(`*[_type == "complain" && author._ref == $id] | order(_createdAt desc){
-  _id,
-title,
-slug,
-_createdAt,
-description,
-category,
-views,
-pitch,
-image,
-"author": author->{
-  _id,
-  name,
-  email,
-  image
-}
-}`);
+export const COMPLAIN_BY_AUTHOR_QUERY = defineQuery(`
+  *[_type == "complain" && author._ref == $id] | order(_createdAt desc) {
+    _id,
+    _type,
+    title,
+    slug,
+    _createdAt,
+    _updatedAt,
+    _rev,
+    description,
+    category,
+    views,
+    pitch,
+    image,
+    "author": author->{
+      _id,
+      name,
+      email,
+      image
+    }
+  }
+`);

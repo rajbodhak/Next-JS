@@ -24,10 +24,7 @@ export default async function Home() {
   }));
 
   const session = await auth();
-  console.log(session?.id);
 
-  // Debug log transformed data
-  // console.log("Transformed Posts:", transformedPosts);
 
   return (
     <>
