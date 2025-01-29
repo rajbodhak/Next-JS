@@ -1,5 +1,5 @@
 
-import ComplainCard, { ComplainCardType } from "../components/ComplainCard";
+import ComplainCard, { ComplainCardType } from "../../components/ComplainCard";
 import { COMPLAIN_QUERY } from "@/sanity/lib/queries";
 import Link from "next/link";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";

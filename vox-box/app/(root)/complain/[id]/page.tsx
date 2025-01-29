@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import markdownit from "markdown-it";
 import { Skeleton } from '@/components/ui/skeleton';
-import View from '@/app/components/View';
+import View from '@/components/View';
 
 export const experimental_ppr = true;
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -20,9 +20,9 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     if (!post) return notFound();
     return (
         <>
-            <section className="min-h-[35rem] w-full dark:bg-black bg-dark dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex flex-col items-center justify-center gap-7 p-8">
+            <section className="min-h-[35rem] w-full dark:bg-black bg-dark dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex flex-col items-center justify-center gap-7 pt-20 px-8">
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-                <p className='tag'>{formatDate(post?._createdAt)}</p>
+                <p className='tag !top-2'>{formatDate(post?._createdAt)}</p>
                 <h1 className='heading'>{post?.title}</h1>
                 <p className='sub-heading'>{post?.description}</p>
             </section>

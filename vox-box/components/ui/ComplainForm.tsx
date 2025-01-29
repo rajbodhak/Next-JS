@@ -9,14 +9,15 @@ import { Send } from 'lucide-react';
 import { formSchema } from '@/lib/validation';
 import { z } from "zod";
 import { useToast } from '@/hooks/use-toast';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { createPitch } from '@/lib/actions';
 
 const ComplainForm = () => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [pitch, setPitch] = React.useState("**Write Your Pitch**");
     const { toast } = useToast();
-    // const router = useRouter();
+    const router = useRouter();
 
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
@@ -30,17 +31,17 @@ const ComplainForm = () => {
 
             await formSchema.parseAsync(formValues);
 
-            console.log(formSchema)
+            const result = await createPitch(prevState, formData, pitch);
 
-            // if (result.status == "SUCCESS") {
-            //     toast({
-            //         title: "Success",
-            //         description: "Your complain pitch has been created",
-            //     })
-            // }
+            if (result.status == "SUCCESS") {
+                toast({
+                    title: "Success",
+                    description: "Your complain pitch has been created",
+                });
+                router.push(`/complain/${result._id}`)
+            }
 
-            // router.push(`/complain/${result.id}`)
-            // return result 
+            return result;
         } catch (error) {
             if (error instanceof z.ZodError) {
                 const fieldErrors = error.flatten().fieldErrors;
